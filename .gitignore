@@ -1,0 +1,8 @@
+.idea
+coverage
+dist
+node_modules
+
+*.iml
+*error.log
+.env*

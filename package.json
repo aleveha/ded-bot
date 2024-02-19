@@ -1,0 +1,32 @@
+{
+	"name": "bot-template",
+	"version": "1.0.0",
+	"description": "A template for creating a Telegram bot",
+	"scripts": {
+		"build": "yarn tsc && yarn tsc-alias",
+		"check": "biome check .",
+		"dev": "tsx watch src/index.ts",
+		"format": "biome check . --apply",
+		"start": "NODE_ENV=\"production\" node dist/index.js"
+	},
+	"dependencies": {
+		"@grammyjs/auto-retry": "^1.1.1",
+		"@grammyjs/runner": "^2.0.3",
+		"dotenv": "^16.4.4",
+		"envalid": "^8.0.0",
+		"grammy": "^1.21.1",
+		"pino": "^8.19.0",
+		"pino-pretty": "^10.3.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.5.3-nightly.dca6a7a",
+		"@grammyjs/types": "^3.5.2",
+		"@types/node": "^20.11.19",
+		"tsc-alias": "^1.8.8",
+		"tsx": "^4.7.1",
+		"typescript": "^5.3.3"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	}
+}
