@@ -5,9 +5,11 @@
 	},
 	"javascript": {
 		"formatter": {
+			"bracketSpacing": true,
 			"enabled": true,
 			"quoteStyle": "double",
-			"semicolons": "always"
+			"semicolons": "always",
+			"trailingComma": "none"
 		}
 	},
 	"formatter": {
