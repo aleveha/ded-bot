@@ -13,7 +13,7 @@ export async function start(ctx: CommandContext<Context>) {
 			.replace("$bot_username", `@${ctx.me.username}`),
 		{
 			reply_markup: {
-				inline_keyboard: [[{ text: "Добавить бота в чат", url: `https://t.me/@${ctx.me.username}?startgroup=true` }]]
+				inline_keyboard: [[{ text: "Добавить бота в чат", url: `https://t.me/${ctx.me.username}?startgroup=true` }]]
 			}
 		}
 	);
