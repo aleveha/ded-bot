@@ -237,5 +237,5 @@ export async function granddad(ctx: Context) {
 		answer = answer.toUpperCase();
 	}
 
-	await ctx.reply(answer);
+	await ctx.reply(answer, { reply_to_message_id: ctx.msg?.message_id });
 }
