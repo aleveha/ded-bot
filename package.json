@@ -1,7 +1,6 @@
 {
-	"name": "bot-template",
+	"name": "ded-bot",
 	"version": "1.0.0",
-	"description": "A template for creating a Telegram bot",
 	"scripts": {
 		"build": "yarn tsc && yarn tsc-alias",
 		"check": "biome check .",
