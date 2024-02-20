@@ -7,9 +7,7 @@ const text =
 	"Добавить бота в чат можно так же, как и любого другого пользователя.";
 
 const ad = {
-	video: {
-		file_id: "BAACAgIAAxkBAAICSGXU73vfEGt6Du5EE0Ro0Pggvh0mAAITQAACkmWoSg14f_30KjGbNAQ"
-	},
+	video: "https://telegra.ph/file/6a0d09f29194a66c056d4.mp4",
 	caption:
 		"*Представьте 1\\.100\\.000\\.000₽*\n" +
 		"*┗* Нет, это не годовой бюджет РФ\\!\n\n" +
@@ -25,7 +23,7 @@ const ad = {
 
 export async function start(ctx: CommandContext<Context>) {
 	if (isChatPrivate(ctx)) {
-		await ctx.replyWithVideo(ad.video.file_id, { caption: ad.caption, parse_mode: "MarkdownV2" });
+		await ctx.replyWithVideo(ad.video, { caption: ad.caption, parse_mode: "MarkdownV2" });
 	}
 
 	await ctx.reply(
