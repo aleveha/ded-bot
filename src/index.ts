@@ -23,6 +23,8 @@ bot.command("pred", prediction);
 bot.hears(/дед/gim, granddad);
 bot.filter((ctx) => ctx.chat?.type === "private").use(granddad);
 
+bot.catch((err) => logger.error(err));
+
 const runner = run(bot);
 
 async function stopRunner() {
