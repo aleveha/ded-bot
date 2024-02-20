@@ -1,4 +1,6 @@
 import type { CommandContext, Context } from "grammy";
+import { SLURS } from "~/handlers/shared/slurs";
+import { endsWithPunctuation } from "~/utils/punctuation";
 import { probability, random } from "~/utils/random";
 
 const starters = [
@@ -11,36 +13,6 @@ const starters = [
 	"Предупреждаю",
 	"Слушай моё предсказание",
 	"Слушай сюда"
-];
-const slurs = [
-	"дебил",
-	"долбоеб",
-	"долбоебище",
-	"дура",
-	"дурак",
-	"дурачок",
-	"дурында",
-	"дятел",
-	"еблан",
-	"ебланище",
-	"еблуша",
-	"идиот",
-	"идиотина",
-	"козел",
-	"козлина",
-	"кусок дерьма",
-	"мудила",
-	"мудосос",
-	"пидор",
-	"пидорас",
-	"пидорасина",
-	"скотина",
-	"тварина",
-	"тварь",
-	"тупица",
-	"тупой",
-	"ублюдок",
-	"урод"
 ];
 const predictions = [
 	"Беспокоиться не о чем! Успех не наступит раньше, чем ты сможешь выдержать его",
@@ -153,15 +125,15 @@ function getPrediction(_firstLetterToLowerCase = false) {
 	if (withStarter) {
 		let starter = random(starters);
 		if (probability(70)) {
-			starter = `${starter}, ${random(slurs)}`;
+			starter = `${starter}, ${random(SLURS)}`;
 			isSlurUsed = true;
 		}
 
 		prediction = `${starter}: ${firstLetterToLowerCase(prediction)}`;
 	}
 
-	if (!isSlurUsed && probability(40) && prediction.match(/[.!?]$/) === null) {
-		prediction = `${prediction}, ${random(slurs)}`;
+	if (!isSlurUsed && probability(40) && !endsWithPunctuation(prediction)) {
+		prediction = `${prediction}, ${random(SLURS)}`;
 	}
 
 	return _firstLetterToLowerCase ? firstLetterToLowerCase(prediction) : prediction;
