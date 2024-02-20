@@ -5,6 +5,8 @@ import { envs } from "~/config/envs";
 import { prediction } from "~/handlers/commands/prediction";
 import { start } from "~/handlers/commands/start";
 import { granddad } from "~/handlers/triggers/granddad";
+import { isBotReply } from "~/middlewares/is-bot-reply";
+import { isChatPrivate } from "~/middlewares/is-chat-private";
 import logger from "~/utils/logger";
 
 const bot = new Bot(envs.TELEGRAM_TOKEN);
@@ -21,7 +23,7 @@ bot.api
 bot.command("start", start);
 bot.command("pred", prediction);
 bot.hears(/дед/gim, granddad);
-bot.filter((ctx) => ctx.chat?.type === "private").use(granddad);
+bot.filter((ctx) => isChatPrivate(ctx) || isBotReply(ctx)).use(granddad);
 
 bot.catch((err) => logger.error(err));
 
